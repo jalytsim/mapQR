@@ -280,18 +280,7 @@ def generate_qr():
     farm_id = request.form['farm_id']
 
     # Connect to the MySQL database
-    conn = mysql.connector.connect(
-        host="127.0.0.1",
-        user="root",
-        password="root",
-        database="qrcode"
-    )
-
-    # Check if the connection was successful
-    if conn.is_connected():
-        print("Connected to MySQL database")
-    
-    cursor = conn.cursor()
+    cursor = mysql.connection.cursor()
 
     # Execute the query to fetch the data for the given Farm ID
     cursor.execute("""
@@ -315,7 +304,7 @@ def generate_qr():
                 FROM 
                     farm f
                 JOIN 
-                    farmData fd ON f.id = fd.farm_id
+                    farmdata fd ON f.id = fd.farm_id
                 JOIN 
                     district d ON f.district_id = d.id
                 WHERE 
@@ -386,10 +375,10 @@ def generate_qr():
                 
 
     # Close the database connection
-        conn.close()
-        
-        # Return the QR code image as binary data for rendering
-        return send_file(zip_temp.name, as_attachment=True, download_name=f"QR_{farmer_name}.zip")
+    cursor.close()
+    
+    # Return the QR code image as binary data for rendering
+    return send_file(zip_temp.name, as_attachment=True, download_name=f"QR_{farmer_name}.zip")
 @app.route('/auth', methods=['POST'])
 def authenticate():
     username = request.form['username']
