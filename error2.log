@@ -1,0 +1,362 @@
+[2024-04-19 21:18:23 +0000] [118223] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:18:23 +0000] [118223] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:18:23 +0000] [118223] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:24 +0000] [118223] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:18:24 +0000] [118223] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:25 +0000] [118223] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:18:25 +0000] [118223] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:26 +0000] [118223] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:18:26 +0000] [118223] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:27 +0000] [118223] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:18:27 +0000] [118223] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:28 +0000] [118223] [ERROR] Can't connect to ('0.0.0.0', 5001)
+[2024-04-19 21:22:03 +0000] [118248] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:22:03 +0000] [118248] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:22:03 +0000] [118248] [ERROR] Retrying in 1 second.
+[2024-04-19 21:22:04 +0000] [118248] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:22:04 +0000] [118248] [ERROR] Retrying in 1 second.
+[2024-04-19 21:22:05 +0000] [118248] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:22:05 +0000] [118248] [ERROR] Retrying in 1 second.
+[2024-04-19 21:22:06 +0000] [118248] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:22:06 +0000] [118248] [ERROR] Retrying in 1 second.
+[2024-04-19 21:22:07 +0000] [118248] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:22:07 +0000] [118248] [ERROR] Retrying in 1 second.
+[2024-04-19 21:22:08 +0000] [118248] [ERROR] Can't connect to ('0.0.0.0', 5001)
+[2024-04-19 21:38:02 +0000] [118381] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:38:02 +0000] [118381] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:38:02 +0000] [118381] [ERROR] Retrying in 1 second.
+[2024-04-19 21:38:03 +0000] [118381] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:38:03 +0000] [118381] [ERROR] Retrying in 1 second.
+[2024-04-19 21:38:04 +0000] [118381] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:38:04 +0000] [118381] [ERROR] Retrying in 1 second.
+[2024-04-19 21:38:05 +0000] [118381] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:38:05 +0000] [118381] [ERROR] Retrying in 1 second.
+[2024-04-19 21:38:06 +0000] [118381] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:38:06 +0000] [118381] [ERROR] Retrying in 1 second.
+[2024-04-19 21:38:07 +0000] [118381] [ERROR] Can't connect to ('0.0.0.0', 5001)
+[2024-04-19 21:47:29 +0000] [118599] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:47:29 +0000] [118599] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:47:29 +0000] [118599] [ERROR] Retrying in 1 second.
+[2024-04-19 21:47:30 +0000] [118599] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:47:30 +0000] [118599] [ERROR] Retrying in 1 second.
+[2024-04-19 21:47:31 +0000] [118599] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:47:31 +0000] [118599] [ERROR] Retrying in 1 second.
+[2024-04-19 21:47:32 +0000] [118599] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:47:32 +0000] [118599] [ERROR] Retrying in 1 second.
+[2024-04-19 21:47:33 +0000] [118599] [ERROR] Connection in use: ('0.0.0.0', 5001)
+[2024-04-19 21:47:33 +0000] [118599] [ERROR] Retrying in 1 second.
+[2024-04-19 21:47:34 +0000] [118599] [ERROR] Can't connect to ('0.0.0.0', 5001)
+[2024-04-19 21:49:37 +0000] [118657] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:49:37 +0000] [118657] [INFO] Listening at: http://0.0.0.0:5001 (118657)
+[2024-04-19 21:49:37 +0000] [118657] [INFO] Using worker: sync
+[2024-04-19 21:49:37 +0000] [118659] [INFO] Booting worker with pid: 118659
+[2024-04-19 21:49:37 +0000] [118661] [INFO] Booting worker with pid: 118661
+[2024-04-19 21:49:37 +0000] [118663] [INFO] Booting worker with pid: 118663
+[2024-04-19 21:49:37 +0000] [118665] [INFO] Booting worker with pid: 118665
+[2024-04-19 21:55:31 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:118661)
+[2024-04-19 21:55:32 +0000] [118661] [ERROR] Error handling request /soil
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 178, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/app.py", line 225, in index_soil
+    choropleth_map = generate_choropleth_map_soil()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/app.py", line 111, in generate_choropleth_map_soil
+    fig = px.choropleth_mapbox(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/express/_chart_types.py", line 1284, in choropleth_mapbox
+    return make_figure(args=locals(), constructor=go.Choroplethmapbox)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/express/_core.py", line 2335, in make_figure
+    fig.update_layout(template=args["template"], overwrite=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/graph_objs/_figure.py", line 775, in update_layout
+    return super(Figure, self).update_layout(dict1, overwrite, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 1391, in update_layout
+    self.layout.update(dict1, overwrite=overwrite, **kwargs)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5137, in update
+    BaseFigure._perform_update(self, kwargs, overwrite=overwrite)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 3910, in _perform_update
+    plotly_obj[key] = val
+    ~~~~~~~~~~^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5912, in __setitem__
+    super(BaseLayoutHierarchyType, self).__setitem__(prop, value)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4866, in __setitem__
+    self._set_compound_prop(prop, value)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5277, in _set_compound_prop
+    val = validator.validate_coerce(val, skip_invalid=self._skip_invalid)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 2777, in validate_coerce
+    return super(BaseTemplateValidator, self).validate_coerce(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 2488, in validate_coerce
+    v = self.data_class(v)
+        ^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/graph_objs/layout/_template.py", line 323, in __init__
+    self["data"] = _v
+    ~~~~^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4866, in __setitem__
+    self._set_compound_prop(prop, value)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5277, in _set_compound_prop
+    val = validator.validate_coerce(val, skip_invalid=self._skip_invalid)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 2484, in validate_coerce
+    v = self.data_class(v, skip_invalid=skip_invalid, _validate=_validate)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/graph_objs/layout/template/_data.py", line 1696, in __init__
+    self["scattermapbox"] = _v
+    ~~~~^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4870, in __setitem__
+    self._set_array_prop(prop, value)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5351, in _set_array_prop
+    val = validator.validate_coerce(val, skip_invalid=self._skip_invalid)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 2576, in validate_coerce
+    res.append(self.data_class(v_el, skip_invalid=skip_invalid))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/graph_objs/_scattermapbox.py", line 2176, in __init__
+    self["marker"] = _v
+    ~~~~^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4866, in __setitem__
+    self._set_compound_prop(prop, value)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 5277, in _set_compound_prop
+    val = validator.validate_coerce(val, skip_invalid=self._skip_invalid)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/_plotly_utils/basevalidators.py", line 2484, in validate_coerce
+    v = self.data_class(v, skip_invalid=skip_invalid, _validate=_validate)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/graph_objs/scattermapbox/_marker.py", line 1286, in __init__
+    self["colorbar"] = _v
+    ~~~~^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4862, in __setitem__
+    validator = self._get_validator(prop)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/basedatatypes.py", line 4344, in _get_validator
+    return ValidatorCache.get_validator(self._path_str, prop)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/validator_cache.py", line 29, in get_validator
+    importlib.import_module("plotly.validators." + parent_path),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1032, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1130, in get_data
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:55:32 +0000] [118661] [INFO] Worker exiting (pid: 118661)
+[2024-04-19 21:55:33 +0000] [118657] [ERROR] Worker (pid:118661) was sent SIGKILL! Perhaps out of memory?
+[2024-04-19 21:55:33 +0000] [118771] [INFO] Booting worker with pid: 118771
+[2024-04-19 21:55:36 +0000] [118657] [ERROR] Worker (pid:118665) was sent SIGKILL! Perhaps out of memory?
+[2024-04-19 21:55:36 +0000] [118774] [INFO] Booting worker with pid: 118774
+[2024-04-19 21:57:04 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:118659)
+[2024-04-19 21:57:04 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:118771)
+[2024-04-19 21:57:04 +0000] [118659] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:57:04 +0000] [118659] [INFO] Worker exiting (pid: 118659)
+[2024-04-19 21:57:04 +0000] [118771] [ERROR] Error handling request /soil
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 135, in handle
+    self.handle_request(listener, req, client, addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 178, in handle_request
+    respiter = self.wsgi(environ, resp.start_response)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 1478, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/app.py", line 225, in index_soil
+    choropleth_map = generate_choropleth_map_soil()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/app.py", line 111, in generate_choropleth_map_soil
+    fig = px.choropleth_mapbox(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/express/_chart_types.py", line 1284, in choropleth_mapbox
+    return make_figure(args=locals(), constructor=go.Choroplethmapbox)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/express/_core.py", line 2076, in make_figure
+    args = build_dataframe(args, constructor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/express/_core.py", line 1485, in build_dataframe
+    df_output, wide_id_vars = process_args_into_dataframe(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/plotly/express/_core.py", line 1286, in process_args_into_dataframe
+    df_output = pd.DataFrame(df_output)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/frame.py", line 733, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/internals/construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/internals/construction.py", line 152, in arrays_to_mgr
+    return create_block_manager_from_column_arrays(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/internals/managers.py", line 2091, in create_block_manager_from_column_arrays
+    mgr._consolidate_inplace()
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/internals/managers.py", line 1749, in _consolidate_inplace
+    if not self.is_consolidated():
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/internals/managers.py", line 1731, in is_consolidated
+    self._consolidate_check()
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/internals/managers.py", line 1740, in _consolidate_check
+    dtypes = [blk.dtype for blk in self.blocks if blk._can_consolidate]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/internals/managers.py", line 1740, in <listcomp>
+    dtypes = [blk.dtype for blk in self.blocks if blk._can_consolidate]
+                                                  ^^^^^^^^^^^^^^^^^^^^
+  File "properties.pyx", line 36, in pandas._libs.properties.CachedProperty.__get__
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/pandas/core/internals/blocks.py", line 192, in _can_consolidate
+    @final
+    
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:57:04 +0000] [118771] [INFO] Worker exiting (pid: 118771)
+[2024-04-19 21:57:05 +0000] [118657] [ERROR] Worker (pid:118659) was sent SIGKILL! Perhaps out of memory?
+[2024-04-19 21:57:05 +0000] [118657] [ERROR] Worker (pid:118771) was sent SIGKILL! Perhaps out of memory?
+[2024-04-19 21:57:05 +0000] [118818] [INFO] Booting worker with pid: 118818
+[2024-04-19 21:57:05 +0000] [118819] [INFO] Booting worker with pid: 118819
+[2024-04-19 21:57:38 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:118774)
+[2024-04-19 21:57:38 +0000] [118774] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:57:38 +0000] [118774] [INFO] Worker exiting (pid: 118774)
+[2024-04-19 21:57:39 +0000] [118657] [ERROR] Worker (pid:118774) was sent SIGKILL! Perhaps out of memory?
+[2024-04-19 21:57:39 +0000] [118835] [INFO] Booting worker with pid: 118835
+[2024-04-20 00:13:56 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:118819)
+[2024-04-20 00:13:58 +0000] [118657] [ERROR] Worker (pid:118819) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 00:13:58 +0000] [121699] [INFO] Booting worker with pid: 121699
+[2024-04-20 03:56:30 +0000] [118657] [ERROR] Worker (pid:118663) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 03:56:30 +0000] [124907] [INFO] Booting worker with pid: 124907
+[2024-04-20 03:57:17 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:121699)
+[2024-04-20 03:57:17 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:124907)
+[2024-04-20 03:57:18 +0000] [118657] [ERROR] Worker (pid:121699) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 03:57:18 +0000] [118657] [ERROR] Worker (pid:124907) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 03:57:18 +0000] [124923] [INFO] Booting worker with pid: 124923
+[2024-04-20 03:57:18 +0000] [124924] [INFO] Booting worker with pid: 124924
+[2024-04-20 03:57:49 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:118835)
+[2024-04-20 03:57:50 +0000] [118657] [ERROR] Worker (pid:118835) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 03:57:50 +0000] [124931] [INFO] Booting worker with pid: 124931
+[2024-04-20 03:59:14 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:118818)
+[2024-04-20 03:59:14 +0000] [118657] [CRITICAL] WORKER TIMEOUT (pid:124931)
+[2024-04-20 03:59:14 +0000] [118818] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-20 03:59:14 +0000] [118818] [INFO] Worker exiting (pid: 118818)
+[2024-04-20 03:59:15 +0000] [118657] [ERROR] Worker (pid:118818) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 03:59:15 +0000] [118657] [ERROR] Worker (pid:124931) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 03:59:15 +0000] [124953] [INFO] Booting worker with pid: 124953
+[2024-04-20 03:59:15 +0000] [124954] [INFO] Booting worker with pid: 124954
+[2024-04-20 04:18:27 +0000] [118657] [INFO] Handling signal: term
+[2024-04-20 04:18:27 +0000] [124923] [INFO] Worker exiting (pid: 124923)
+[2024-04-20 04:18:27 +0000] [124924] [INFO] Worker exiting (pid: 124924)
+[2024-04-20 04:18:27 +0000] [124953] [INFO] Worker exiting (pid: 124953)
+[2024-04-20 04:18:27 +0000] [124954] [INFO] Worker exiting (pid: 124954)
+[2024-04-20 04:18:27 +0000] [118657] [ERROR] Worker (pid:124954) was sent SIGTERM!
+[2024-04-20 04:18:27 +0000] [118657] [ERROR] Worker (pid:124924) was sent SIGTERM!
+[2024-04-20 04:18:27 +0000] [118657] [ERROR] Worker (pid:124953) was sent SIGTERM!
+[2024-04-20 04:18:27 +0000] [118657] [ERROR] Worker (pid:124923) was sent SIGTERM!
+[2024-04-20 04:18:27 +0000] [118657] [INFO] Shutting down: Master

@@ -1,0 +1,12 @@
+# Flask
+__pycache__/
+*.pyc
+instance/
+.pytest_cache/
+.env
+
+# Node.js
+node_modules/
+
+#my venv
+flaskvenv/

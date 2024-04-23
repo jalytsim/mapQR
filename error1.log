@@ -1,0 +1,508 @@
+[2024-04-19 21:18:23 +0000] [118224] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:18:23 +0000] [118224] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2024-04-19 21:18:23 +0000] [118224] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:24 +0000] [118224] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2024-04-19 21:18:24 +0000] [118224] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:25 +0000] [118224] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2024-04-19 21:18:25 +0000] [118224] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:26 +0000] [118224] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2024-04-19 21:18:26 +0000] [118224] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:27 +0000] [118224] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2024-04-19 21:18:27 +0000] [118224] [ERROR] Retrying in 1 second.
+[2024-04-19 21:18:28 +0000] [118224] [ERROR] Can't connect to ('0.0.0.0', 5000)
+[2024-04-19 21:22:03 +0000] [118246] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:22:03 +0000] [118246] [INFO] Listening at: http://0.0.0.0:5000 (118246)
+[2024-04-19 21:22:03 +0000] [118246] [INFO] Using worker: sync
+[2024-04-19 21:22:03 +0000] [118249] [INFO] Booting worker with pid: 118249
+[2024-04-19 21:22:03 +0000] [118250] [INFO] Booting worker with pid: 118250
+[2024-04-19 21:22:03 +0000] [118251] [INFO] Booting worker with pid: 118251
+[2024-04-19 21:22:03 +0000] [118252] [INFO] Booting worker with pid: 118252
+[2024-04-19 21:22:40 +0000] [118249] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 281, in parse
+    self.parse_request_line(line)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 445, in parse_request_line
+    raise InvalidHTTPVersion(self.version)
+gunicorn.http.errors.InvalidHTTPVersion: <exception str() failed>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 609, in spawn_worker
+    worker.init_process()
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 142, in init_process
+    self.run()
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 126, in run
+    self.run_for_one(timeout)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 70, in run_for_one
+    self.accept(listener)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 32, in accept
+    self.handle(listener, client, addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 158, in handle
+    self.handle_error(req, client, addr, e)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 225, in handle_error
+    mesg = "Invalid HTTP Version '%s'" % str(exc)
+                                         ^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/errors.py", line 56, in __str__
+    return "Invalid HTTP Version: %r" % self.version
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+TypeError: not all arguments converted during string formatting
+[2024-04-19 21:22:40 +0000] [118249] [INFO] Worker exiting (pid: 118249)
+[2024-04-19 21:22:40 +0000] [118246] [ERROR] Worker (pid:118249) exited with code 255
+[2024-04-19 21:22:40 +0000] [118246] [ERROR] Worker (pid:118249) exited with code 255.
+[2024-04-19 21:22:40 +0000] [118253] [INFO] Booting worker with pid: 118253
+[2024-04-19 21:37:30 +0000] [118250] [INFO] Worker exiting (pid: 118250)
+[2024-04-19 21:37:30 +0000] [118246] [INFO] Handling signal: term
+[2024-04-19 21:37:30 +0000] [118252] [INFO] Worker exiting (pid: 118252)
+[2024-04-19 21:37:30 +0000] [118251] [INFO] Worker exiting (pid: 118251)
+[2024-04-19 21:37:30 +0000] [118253] [INFO] Worker exiting (pid: 118253)
+[2024-04-19 21:37:31 +0000] [118246] [INFO] Shutting down: Master
+[2024-04-19 21:38:02 +0000] [118380] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:38:02 +0000] [118380] [INFO] Listening at: http://0.0.0.0:5000 (118380)
+[2024-04-19 21:38:02 +0000] [118380] [INFO] Using worker: sync
+[2024-04-19 21:38:02 +0000] [118382] [INFO] Booting worker with pid: 118382
+[2024-04-19 21:38:03 +0000] [118383] [INFO] Booting worker with pid: 118383
+[2024-04-19 21:38:03 +0000] [118384] [INFO] Booting worker with pid: 118384
+[2024-04-19 21:38:03 +0000] [118385] [INFO] Booting worker with pid: 118385
+[2024-04-19 21:41:48 +0000] [118380] [CRITICAL] WORKER TIMEOUT (pid:118382)
+[2024-04-19 21:41:48 +0000] [118380] [CRITICAL] WORKER TIMEOUT (pid:118383)
+[2024-04-19 21:41:48 +0000] [118383] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:41:48 +0000] [118382] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:41:48 +0000] [118382] [INFO] Worker exiting (pid: 118382)
+[2024-04-19 21:41:48 +0000] [118383] [INFO] Worker exiting (pid: 118383)
+[2024-04-19 21:41:48 +0000] [118477] [INFO] Booting worker with pid: 118477
+[2024-04-19 21:41:48 +0000] [118478] [INFO] Booting worker with pid: 118478
+[2024-04-19 21:42:22 +0000] [118380] [CRITICAL] WORKER TIMEOUT (pid:118385)
+[2024-04-19 21:42:22 +0000] [118385] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:42:22 +0000] [118385] [INFO] Worker exiting (pid: 118385)
+[2024-04-19 21:42:23 +0000] [118486] [INFO] Booting worker with pid: 118486
+[2024-04-19 21:43:03 +0000] [118380] [CRITICAL] WORKER TIMEOUT (pid:118477)
+[2024-04-19 21:43:03 +0000] [118380] [CRITICAL] WORKER TIMEOUT (pid:118486)
+[2024-04-19 21:43:03 +0000] [118486] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:43:03 +0000] [118486] [INFO] Worker exiting (pid: 118486)
+[2024-04-19 21:43:03 +0000] [118477] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:43:03 +0000] [118477] [INFO] Worker exiting (pid: 118477)
+[2024-04-19 21:43:03 +0000] [118502] [INFO] Booting worker with pid: 118502
+[2024-04-19 21:43:03 +0000] [118503] [INFO] Booting worker with pid: 118503
+[2024-04-19 21:47:29 +0000] [118600] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:49:24 +0000] [118380] [INFO] Handling signal: term
+[2024-04-19 21:49:24 +0000] [118503] [INFO] Worker exiting (pid: 118503)
+[2024-04-19 21:49:24 +0000] [118478] [INFO] Worker exiting (pid: 118478)
+[2024-04-19 21:49:24 +0000] [118502] [INFO] Worker exiting (pid: 118502)
+[2024-04-19 21:49:24 +0000] [118384] [INFO] Worker exiting (pid: 118384)
+[2024-04-19 21:49:25 +0000] [118380] [INFO] Shutting down: Master
+[2024-04-19 21:49:37 +0000] [118658] [INFO] Starting gunicorn 22.0.0
+[2024-04-19 21:49:37 +0000] [118658] [INFO] Listening at: http://0.0.0.0:5000 (118658)
+[2024-04-19 21:49:37 +0000] [118658] [INFO] Using worker: sync
+[2024-04-19 21:49:37 +0000] [118660] [INFO] Booting worker with pid: 118660
+[2024-04-19 21:49:37 +0000] [118662] [INFO] Booting worker with pid: 118662
+[2024-04-19 21:49:37 +0000] [118664] [INFO] Booting worker with pid: 118664
+[2024-04-19 21:49:37 +0000] [118666] [INFO] Booting worker with pid: 118666
+[2024-04-19 21:53:17 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:118662)
+[2024-04-19 21:53:58 +0000] [118658] [ERROR] Worker (pid:118662) was sent SIGKILL! Perhaps out of memory?
+[2024-04-19 21:53:59 +0000] [118687] [INFO] Booting worker with pid: 118687
+[2024-04-19 21:57:38,381] ERROR in app: Exception on /generate_qr [POST]
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on '127.0.0.1:3306' (111)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/main.py", line 22, in generate_qr
+    conn = mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on '127.0.0.1:3306' (111)
+[2024-04-19 21:58:00 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:118660)
+[2024-04-19 21:58:00 +0000] [118660] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-19 21:58:00 +0000] [118660] [INFO] Worker exiting (pid: 118660)
+[2024-04-19 21:58:01 +0000] [118658] [ERROR] Worker (pid:118660) was sent SIGKILL! Perhaps out of memory?
+[2024-04-19 21:58:01 +0000] [118848] [INFO] Booting worker with pid: 118848
+[2024-04-19 21:58:10 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:118687)
+[2024-04-19 21:58:11 +0000] [118658] [ERROR] Worker (pid:118687) was sent SIGKILL! Perhaps out of memory?
+[2024-04-19 21:58:11 +0000] [118859] [INFO] Booting worker with pid: 118859
+[2024-04-20 03:59:11,974] ERROR in app: Exception on /generate_qr [POST]
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Can't connect to MySQL server on '127.0.0.1:3306' (111)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/flask/app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/main.py", line 22, in generate_qr
+    conn = mysql.connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/mysql/connector/connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2003 (HY000): Can't connect to MySQL server on '127.0.0.1:3306' (111)
+[2024-04-20 03:59:36 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:118848)
+[2024-04-20 03:59:36 +0000] [118848] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-20 03:59:36 +0000] [118848] [INFO] Worker exiting (pid: 118848)
+[2024-04-20 03:59:36 +0000] [124962] [INFO] Booting worker with pid: 124962
+[2024-04-20 03:59:43 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:118859)
+[2024-04-20 03:59:43 +0000] [118859] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-20 03:59:43 +0000] [118859] [INFO] Worker exiting (pid: 118859)
+[2024-04-20 03:59:43 +0000] [124963] [INFO] Booting worker with pid: 124963
+[2024-04-20 04:13:57 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:124962)
+[2024-04-20 04:13:57 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:124963)
+[2024-04-20 04:13:57 +0000] [124962] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-20 04:13:57 +0000] [124962] [INFO] Worker exiting (pid: 124962)
+[2024-04-20 04:13:58 +0000] [118658] [ERROR] Worker (pid:124962) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 04:13:58 +0000] [118658] [ERROR] Worker (pid:124963) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 04:13:58 +0000] [125504] [INFO] Booting worker with pid: 125504
+[2024-04-20 04:13:58 +0000] [125505] [INFO] Booting worker with pid: 125505
+[2024-04-20 04:14:30 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:118664)
+[2024-04-20 04:14:30 +0000] [118658] [CRITICAL] WORKER TIMEOUT (pid:118666)
+[2024-04-20 04:14:30 +0000] [118666] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-20 04:14:30 +0000] [118664] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 134, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/parser.py", line 42, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 257, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 269, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/message.py", line 260, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 37, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/http/unreader.py", line 64, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/brian/flaskvenv/lib/python3.11/site-packages/gunicorn/workers/base.py", line 203, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2024-04-20 04:14:31 +0000] [118664] [INFO] Worker exiting (pid: 118664)
+[2024-04-20 04:14:31 +0000] [118666] [INFO] Worker exiting (pid: 118666)
+[2024-04-20 04:14:31 +0000] [118658] [ERROR] Worker (pid:118664) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 04:14:31 +0000] [118658] [ERROR] Worker (pid:118666) was sent SIGKILL! Perhaps out of memory?
+[2024-04-20 04:14:31 +0000] [125519] [INFO] Booting worker with pid: 125519
+[2024-04-20 04:14:31 +0000] [125520] [INFO] Booting worker with pid: 125520
+[2024-04-20 04:18:06 +0000] [125520] [INFO] Worker exiting (pid: 125520)
+[2024-04-20 04:18:06 +0000] [125504] [INFO] Worker exiting (pid: 125504)
+[2024-04-20 04:18:06 +0000] [125505] [INFO] Worker exiting (pid: 125505)
+[2024-04-20 04:18:06 +0000] [125519] [INFO] Worker exiting (pid: 125519)
+[2024-04-20 04:18:06 +0000] [118658] [INFO] Handling signal: term
+[2024-04-20 04:18:27 +0000] [118658] [INFO] Shutting down: Master
