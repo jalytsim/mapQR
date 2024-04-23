@@ -1,33 +1,22 @@
-from flask import Flask, render_template, redirect,request, url_for
+from flask import Flask, render_template, redirect,request, url_for, send_file
 import json
-import sqlite3
 import pandas as pd
 import plotly.express as px
 from flask_mysqldb import MySQL
 
 
 app = Flask(__name__)
-app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
-<<<<<<< HEAD
 app.config['MYSQL_USER'] = 'brian'
 app.config['MYSQL_PASSWORD'] = 'brian'
-=======
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
->>>>>>> 7df20ca4588f2305b8aef25d5a649c32c0449e5f
 app.config['MYSQL_DB'] = 'qrcode'
 mysql = MySQL(app)
 
 
 users = {
     'brian': 'brian',
-<<<<<<< HEAD
     'nomena': 'nomena',
     'david': 'david'
-=======
-    'nomena': 'nomena'
->>>>>>> 7df20ca4588f2305b8aef25d5a649c32c0449e5f
 }
 
 def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_date=None):
@@ -47,11 +36,7 @@ def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_d
             date_filter = f"AND fd.planting_date BETWEEN '{start_date}' AND '{end_date}'"
 
         query = f"SELECT d.name AS District, SUM(fd.{data_variable}) AS Total{data_variable} " \
-<<<<<<< HEAD
                 f"FROM farmdata fd " \
-=======
-                f"FROM farmData fd " \
->>>>>>> 7df20ca4588f2305b8aef25d5a649c32c0449e5f
                 f"JOIN farm f ON fd.farm_id = f.id " \
                 f"JOIN district d ON f.district_id = d.id " \
                 f"WHERE 1 {date_filter} " \
@@ -129,11 +114,7 @@ def generate_choropleth_map_soil():
                 AVG(s.humidity) AS AvgHumidity,
                 AVG(s.conductivity) AS AvgConductivity,
                 AVG(s.signal_level) AS AvgSignalLevel
-<<<<<<< HEAD
             FROM soildata s
-=======
-            FROM soilData s
->>>>>>> 7df20ca4588f2305b8aef25d5a649c32c0449e5f
             JOIN district d ON s.district_id = d.id
             GROUP BY d.name;
         """
@@ -200,11 +181,7 @@ def generate_choropleth_map_combined():
                         AVG(fd.actual_yield) AS TotalActualYield, 
                         AVG(fd.tilled_land_size) AS TotalTilledLandSize, 
                         AVG(fd.expected_yield) AS TotalExpectedYield 
-<<<<<<< HEAD
                     FROM farmdata fd
-=======
-                    FROM farmData fd
->>>>>>> 7df20ca4588f2305b8aef25d5a649c32c0449e5f
                     JOIN farm f ON fd.farm_id = f.id
                     JOIN district d ON f.district_id = d.id
                     GROUP BY d.name;
@@ -312,9 +289,4 @@ def index():
     return render_template('login.html')
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-    app.debug = True
     app.run(host='0.0.0.0')
-=======
-    app.run(debug=True)
->>>>>>> 7df20ca4588f2305b8aef25d5a649c32c0449e5f
