@@ -261,12 +261,14 @@ def index_dynamics():
     data_variable = request.args.get('data_variable', 'actual_yield')
     start_date = request.args.get('start_date')
     end_date = request.args.get('end_date')
+    crop = request.args.get('crop', None)  # Get the selected crop ID from the request
 
     # Generate the choropleth map HTML code
-    choropleth_map = generate_choropleth_map(data_variable=data_variable, start_date=start_date, end_date=end_date)
+    choropleth_map = generate_choropleth_map(data_variable=data_variable, start_date=start_date, end_date=end_date, crop=crop)
 
     # Render the template with the choropleth map
     return render_template('dynamic.html', choropleth_map=choropleth_map)
+
 @app.route('/map')
 def map():
     # Generate the choropleth map HTML code
