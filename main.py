@@ -282,8 +282,8 @@ def generate_qr():
     # Connect to the MySQL database
     conn = mysql.connector.connect(
         host="127.0.0.1",
-        user="root",
-        password="root",
+        user="brian",
+        password="brian",
         database="qrcode"
     )
 
