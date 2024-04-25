@@ -38,23 +38,24 @@ def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_d
 
         cursor = mysql.connection
         conn = cursor.cursor()
-        # Construct the dynamic data query with SUM aggregation and optional date filtering
+        # Construct the dynamic data query with SUM aggregation and optional date and crop filtering
         date_filter = ""
+        crop_filter = ""
         if start_date and end_date:
             date_filter = f"AND fd.planting_date BETWEEN '{start_date}' AND '{end_date}'"
+        if crop:
+            crop_filter = f"AND fd.crop_id = {crop}"
 
         query = f"SELECT d.name AS District, SUM(fd.{data_variable}) AS Total{data_variable} " \
                 f"FROM farmdata fd " \
                 f"JOIN farm f ON fd.farm_id = f.id " \
                 f"JOIN district d ON f.district_id = d.id " \
-                f"WHERE 1 {date_filter} " \
+                f"WHERE 1 {date_filter} {crop_filter} " \
                 f"GROUP BY d.name;"
-
 
         # Fetch data from SQLite
         conn.execute(query)
         data = conn.fetchall()
-
 
         # Create a DataFrame from the SQLite data
         df = pd.DataFrame(data, columns=['Subcounty', f'Total{data_variable}'])
@@ -98,6 +99,7 @@ def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_d
     except Exception as e:
         print(f"Error loading GeoJSON file or querying data: {e}")
         return None
+
 def generate_choropleth_map_soil():
     # Specify the correct file path
     geojson_file_path = 'src/geoBoundaries-UGA-ADM3.geojson'
