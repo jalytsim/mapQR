@@ -23,9 +23,9 @@ mysql = MySQL(app)
 
 
 users = {
-    'brian': 'brian',
     'nomena': 'nomena',
-    'david': 'david'
+    'juan': 'juan',
+    'user1':'user1'
 }
 
 def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_date=None, crop=None):
