@@ -11,6 +11,7 @@ import hashlib
 from zipfile import ZipFile
 import tempfile
 import os
+import plotly.graph_objects as go
 
 app = Flask(__name__)
 
@@ -28,6 +29,10 @@ users = {
     'user1':'user1'
 }
 
+import json
+import pandas as pd
+import plotly.express as px
+from flask_mysqldb import MySQL
 def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_date=None, crop=None):
     # Specify the correct file path
     geojson_file_path = 'src/geoBoundaries-UGA-ADM3.geojson'
@@ -101,6 +106,7 @@ def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_d
         print(f"Error loading GeoJSON file or querying data: {e}")
         return None
 
+
 def generate_choropleth_map_soil():
     # Specify the correct file path
     geojson_file_path = 'src/geoBoundaries-UGA-ADM3.geojson'
@@ -173,7 +179,7 @@ def generate_choropleth_map_soil():
     except Exception as e:
         print(f"Error loading GeoJSON file or querying data: {e}")
         return None
-def generate_choropleth_map_combined():
+def generate_choropleth_map_combined(highlight_region=None):
     # Specify the correct file path
     geojson_file_path = 'src/geoBoundaries-UGA-ADM3.geojson'
 
@@ -198,6 +204,18 @@ def generate_choropleth_map_combined():
 
                 """
 
+        if highlight_region:
+            query = f"""
+                    SELECT d.name AS District, 
+                           AVG(fd.actual_yield) AS TotalActualYield, 
+                           AVG(fd.tilled_land_size) AS TotalTilledLandSize, 
+                           AVG(fd.expected_yield) AS TotalExpectedYield 
+                    FROM farmdata fd
+                    JOIN farm f ON fd.farm_id = f.id
+                    JOIN district d ON f.district_id = d.id
+                    WHERE d.name = '{highlight_region}'
+                    GROUP BY d.name;
+                    """
         # Fetch data from SQLite
         conn.execute(query)
         data = conn.fetchall()
@@ -208,30 +226,51 @@ def generate_choropleth_map_combined():
         df['Average'] = df[['TotalActualYield', 'TotalTilledLandSize', 'TotalExpectedYield']].mean(axis=1)
 
         # Merge GeoJSON data with SQLite data
-        merged_data = pd.merge(df, pd.json_normalize(uganda_geojson['features']),how='right', left_on='Subcounty', right_on='properties.shapeName')
+        merged_data = pd.merge(df, pd.json_normalize(uganda_geojson['features']), how='right', left_on='Subcounty', right_on='properties.shapeName')
 
         # Create choropleth map
-        fig = px.choropleth_mapbox(
-            merged_data,
-            geojson=uganda_geojson,
-            locations='Subcounty',
-            featureidkey="properties.shapeName",
-            color='Average',
-            color_continuous_scale='Blues',
-            mapbox_style="white-bg",
-            center={"lat": 1.27, "lon": 32.29},
-            zoom=6.3,
-            title="Map of Uganda - Average Yield",
-            labels={'Average': 'Average'},
-            hover_data={'Subcounty': False, 'TotalActualYield': True, 'TotalTilledLandSize': True, 'TotalExpectedYield': True},
-            hover_name='Subcounty'
-        )
-        fig.update_layout(
-            height=650,
-            margin={"r":0,"t":40,"l":0,"b":0}
-        )
+        if highlight_region :
+            fig = px.choropleth_mapbox(
+                merged_data,
+                geojson=uganda_geojson,
+                locations='Subcounty',
+                featureidkey="properties.shapeName",
+                color='Average',
+                color_continuous_scale='Blues',
+                mapbox_style="open-street-map",
+                center={"lat": 1.27, "lon": 32.29},
+                zoom=6.3,
+                title="Map of Uganda - Average Yield",
+                labels={'Average': 'Average'},
+                hover_data={'Subcounty': False, 'TotalActualYield': True, 'TotalTilledLandSize': True, 'TotalExpectedYield': True},
+                hover_name='Subcounty'
+            )
+            fig.update_layout(
+                height=650,
+                margin={"r": 0, "t": 40, "l": 0, "b": 0}
+            )
+        else:
+            fig = px.choropleth_mapbox(
+                merged_data,
+                geojson=uganda_geojson,
+                locations='Subcounty',
+                featureidkey="properties.shapeName",
+                color='Average',
+                color_continuous_scale='Blues',
+                mapbox_style="white-bg",
+                center={"lat": 1.27, "lon": 32.29},
+                zoom=6.3,
+                title="Map of Uganda - Average Yield",
+                labels={'Average': 'Average'},
+                hover_data={'Subcounty': False, 'TotalActualYield': True, 'TotalTilledLandSize': True, 'TotalExpectedYield': True},
+                hover_name='Subcounty'
+            )
+            fig.update_layout(
+                height=650,
+                margin={"r": 0, "t": 40, "l": 0, "b": 0})
 
-
+        # Highlight a specific region if provided
+        
         # Get the HTML code for the map
         map_html = fig.to_html(full_html=False)
 
@@ -243,6 +282,7 @@ def generate_choropleth_map_combined():
     except Exception as e:
         print(f"Error loading GeoJSON file or querying data: {e}")
         return None
+    
 @app.route('/combined_map')
 def index_combined():
     # Generate the choropleth map HTML code
@@ -350,7 +390,7 @@ def generate_qr():
                 for i in range(batch_number):
                     serial_data = f"{farmer_name}_{crop_name}_{i+1}"
                     serial_number = hashlib.md5(serial_data.encode('utf-8')).hexdigest()
-                    formatted_data = f"Country: Uganda\nFarm ID: {farmer_name}\nGroup ID: {farmerg_name}\nGeolocation: {geolocation}\nLand poundaries: http://127.0.0.1:5000/geolocatioPolygon\nDistrict: {district_name}\nCrop: {crop_name}\nGrade: {grade}\nTilled Land Size: {tilled_land_size} ACRES\nSeason: {season}\nQuality: {quality}\nProduce Weight: {produce_weight} KG\nHarvest Date: {harvest_date}\nTimestamp: {timestamp}\nDistrict Region: {district_region}\nBatch Number: {i+1}\nChannel Partner: {channel_partner}\n Destination Country: {destination_country}\n Customer Name: {customer_name}\nSerial Number: {serial_number}\n"
+                    formatted_data = f"Country: Uganda\nFarm ID: {farmer_name}\nGroup ID: {farmerg_name}\nGeolocation: {geolocation}\nLand poundaries: http://164.92.211.54:5000/choropleth_map/{district_name}\nDistrict: {district_name}\nCrop: {crop_name}\nGrade: {grade}\nTilled Land Size: {tilled_land_size} ACRES\nSeason: {season}\nQuality: {quality}\nProduce Weight: {produce_weight} KG\nHarvest Date: {harvest_date}\nTimestamp: {timestamp}\nDistrict Region: {district_region}\nBatch Number: {i+1}\nChannel Partner: {channel_partner}\n Destination Country: {destination_country}\n Customer Name: {customer_name}\nSerial Number: {serial_number}\n"
 
                     # Generate the QR code
                     qr = segno.make(formatted_data)
@@ -407,5 +447,15 @@ def qrcode():
 def index():
     return render_template('login.html')
 
+@app.route('/choropleth_map/<region_name>')
+def generate_choropleth_map_specific_region(region_name):
+    choropleth_map = generate_choropleth_map_combined(highlight_region=region_name)
+
+    # Render the template with the choropleth map
+    return render_template('index.html', choropleth_map=choropleth_map)
+
+    
+    
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

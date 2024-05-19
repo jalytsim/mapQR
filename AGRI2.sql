@@ -176,6 +176,7 @@ INSERT INTO farm (name, subcounty, farmergroup_id, district_id, geolocation) VAL
 ('Yusuf Ssekandi Farm', 'Pallisa', 1, 75, '1.1455,33.7092');
 
 
+
 INSERT INTO farm (name, subcounty, farmergroup_id, district_id, geolocation) VALUES
 ('John Doe Farm', 'Kawempe', 1, 76, '0.3163,32.5822'),
 ('Jane Smith Farm', 'Gulu', 2, 77, '2.7809,32.2995'),
@@ -235,6 +236,30 @@ INSERT INTO crop (name, weight, category_id) VALUES
 ('Rice', 20.0, 5),
 ('Bananas', 15.0, 6);
 
+INSERT INTO farm (name, subcounty, farmergroup_id, district_id, geolocation) VALUES
+('Godfrey Lutwama', 'Mbale', 1, 87, '55.52,30.11'),
+('Busingye Joshua', 'Masaka', 2, 84, '1.64,2.72'),
+('Wanyama Esperito', 'Bushenyi', 3, 23, '11.39,3.60');
+
+INSERT INTO farmdata (farm_id, crop_id, tilled_land_size, planting_date, season, quality, quantity, harvest_date, expected_yield, actual_yield, timestamp, channel_partner, destination_country, customer_name) VALUES
+(124, 7, 2.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
+(125, 8, 1.0, '2023-03-20', 1, 'Excellent', 50, '2023-07-20', 500.0, 480.0, '2023-07-20 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
+(126, 7, 3.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
+(126, 8, 1.5, '2023-03-15', 1, 'Good', 50, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd');
+
+INSERT INTO crop (name, weight, category_id) VALUES
+('Coffee Arabica', 25.0, 1),
+('Coffee Robusta', 20.0, 2);
+
+INSERT INTO produceCategory (name, grade) VALUES
+('Coffee Arabica', 5),
+('Coffee Robusta', 4);
+
+INSERT INTO farmData (farm_id, crop_id, tilled_land_size, planting_date, season, quality, quantity, harvest_date, expected_yield, actual_yield, timestamp, channel_partner, destination_country, customer_name)
+VALUES
+(11,1,2.5,'2023-03-15',1,'Good',100,'2023-07-15',2500.0,2300.0,'2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
+(21,2,1.0,'2023-03-20',1,'Fair',50,'2023-07-20',500.0,480.0,'2023-07-20 12:00:00','Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
+(32,3,0.5,'2023-04-01',1,'Good',20,'2023-09-01',500.0,480.0,'2023-09-01 12:00:00','Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
 -- Sample data for farmData
 INSERT INTO farmData (farm_id, crop_id, tilled_land_size, planting_date, season, quality, quantity, harvest_date, expected_yield, actual_yield, timestamp) VALUES
 (1, 1, 2.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00'),
