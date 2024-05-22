@@ -402,18 +402,6 @@ def get_farmProperties(farm_id):
     data = cursor.fetchall()    
     return data
 
-
-# # Example usage:
-# geojson_file = 'multipolygon.json'
-# points = [
-#     {"lat": 37.7749, "lon": -122.4194, "name": "San Francisco", "info": "City in California"},
-#     {"lat": 34.0522, "lon": -118.2437, "name": "Los Angeles", "info": "City in California"},
-#     {"lat": 40.7128, "lon": -74.0060, "name": "New York", "info": "City in New York"}
-# ]
-
-# html_output = create_mapbox_html(geojson_file, points)
-# print(html_output)
-
 @app.route('/combined_map')
 def index_combined():
     # Generate the choropleth map HTML code
@@ -490,7 +478,7 @@ def generate_qr():
                 for i in range(batch_number):
                     serial_data = f"{farmer_name}_{crop_name}_{i+1}"
                     serial_number = hashlib.md5(serial_data.encode('utf-8')).hexdigest()
-                    formatted_data = f"Country: Uganda\nFarm ID: {farmer_name}\nGroup ID: {farmerg_name}\nGeolocation: {geolocation}\nLand poundaries: http://164.92.211.54:5000/choropleth_map/{district_name}\nDistrict: {district_name}\nCrop: {crop_name}\nGrade: {grade}\nTilled Land Size: {tilled_land_size} ACRES\nSeason: {season}\nQuality: {quality}\nProduce Weight: {produce_weight} KG\nHarvest Date: {harvest_date}\nTimestamp: {timestamp}\nDistrict Region: {district_region}\nBatch Number: {i+1}\nChannel Partner: {channel_partner}\n Destination Country: {destination_country}\n Customer Name: {customer_name}\nSerial Number: {serial_number}\n"
+                    formatted_data = f"Country: Uganda\nFarm ID: {farmer_name}\nGroup ID: {farmerg_name}\nGeolocation: {geolocation}\nLand poundaries: http://164.92.211.54:5000//boundaries/{district_name}/{farm_id}\nDistrict: {district_name}\nCrop: {crop_name}\nGrade: {grade}\nTilled Land Size: {tilled_land_size} ACRES\nSeason: {season}\nQuality: {quality}\nProduce Weight: {produce_weight} KG\nHarvest Date: {harvest_date}\nTimestamp: {timestamp}\nDistrict Region: {district_region}\nBatch Number: {i+1}\nChannel Partner: {channel_partner}\n Destination Country: {destination_country}\n Customer Name: {customer_name}\nSerial Number: {serial_number}\n"
 
                     # Generate the QR code
                     qr = segno.make(formatted_data)
