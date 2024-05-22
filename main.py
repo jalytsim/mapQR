@@ -358,7 +358,7 @@ def create_mapbox_html(geojson_file, points):
     fig.update_layout(
         mapbox=dict(
             style="carto-positron",
-            center={"lat": 1.27, "lon": 32.29},  # Center the map
+            center={"lat": point["lat"], "lon": point["lon"]},  # Center the map
             zoom=7
         ),
         margin={"r":0,"t":0,"l":0,"b":0}

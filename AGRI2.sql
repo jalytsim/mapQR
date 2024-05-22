@@ -240,6 +240,15 @@ INSERT INTO farm (name, subcounty, farmergroup_id, district_id, geolocation) VAL
 ('Godfrey Lutwama', 'Mbale', 1, 87, '1.0799005,34.1554209'),
 ('Busingye Joshua', 'Masaka', 2, 84, '-0.4855154,31.493016'),
 ('Wanyama Esperito', 'Bushenyi', 3, 23, '-0.5432572,30.1846092');
+UPDATE farm
+SET geolocation = '1.0799005,34.1554209'
+WHERE name = 'Godfrey Lutwama';
+UPDATE farm
+SET geolocation = '-0.4855154,31.493016'
+WHERE name = 'Busingye Joshua';
+UPDATE farm
+SET geolocation = '-0.5432572,30.1846092'
+WHERE name = 'Wanyama Esperito';
 
 INSERT INTO farmdata (farm_id, crop_id, tilled_land_size, planting_date, season, quality, quantity, harvest_date, expected_yield, actual_yield, timestamp, channel_partner, destination_country, customer_name) VALUES
 (124, 7, 2.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
