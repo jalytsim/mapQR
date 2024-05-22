@@ -29,10 +29,7 @@ users = {
     'user1':'user1'
 }
 
-import json
-import pandas as pd
-import plotly.express as px
-from flask_mysqldb import MySQL
+
 def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_date=None, crop=None):
     # Specify the correct file path
     geojson_file_path = 'src/geoBoundaries-UGA-ADM3.geojson'
@@ -105,8 +102,6 @@ def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_d
     except Exception as e:
         print(f"Error loading GeoJSON file or querying data: {e}")
         return None
-
-
 def generate_choropleth_map_soil():
     # Specify the correct file path
     geojson_file_path = 'src/geoBoundaries-UGA-ADM3.geojson'
@@ -239,7 +234,7 @@ def generate_choropleth_map_combined(highlight_region=None):
                 color_continuous_scale='Blues',
                 mapbox_style="open-street-map",
                 center={"lat": 1.27, "lon": 32.29},
-                zoom=6.3,
+                zoom=9.3,
                 title="Map of Uganda - Average Yield",
                 labels={'Average': 'Average'},
                 hover_data={'Subcounty': False, 'TotalActualYield': True, 'TotalTilledLandSize': True, 'TotalExpectedYield': True},
@@ -282,47 +277,97 @@ def generate_choropleth_map_combined(highlight_region=None):
     except Exception as e:
         print(f"Error loading GeoJSON file or querying data: {e}")
         return None
+def create_polygon(lat, lon, num_sides=6, radius=0.01):
+    from math import sin, cos, pi
+    coords = []
+    for i in range(num_sides):
+        angle = i * (2 * pi / num_sides)
+        dx = radius * cos(angle)
+        dy = radius * sin(angle)
+        coords.append((lon + dx, lat + dy))
+    coords.append(coords[0])  # close the polygon
+    return coords
+def createGeoJSONFeature(polygons):
+    multi_polygon_feature = {
+        "type": "Feature",
+        "geometry": {
+            "type": "MultiPolygon",
+            "coordinates": [[polygon] for polygon in polygons]
+        },
+        "properties": {}
+    }
     
-@app.route('/combined_map')
-def index_combined():
-    # Generate the choropleth map HTML code
-    choropleth_map = generate_choropleth_map_combined()
+    return multi_polygon_feature
+def createGeojsonFeatureCollection(multi_polygon_feature):
+    geojson_data = {
+        "type": "FeatureCollection",
+        "features": [multi_polygon_feature]
+    }
+    
+    return geojson_data
+def create_mapbox_html(geojson_file, points):
+    # Load GeoJSON file
+    
+    polygons = []
+    for point in points:
+        lat = point["lat"]
+        lon = point["lon"]
+        polygon = create_polygon(lat, lon, num_sides=6, radius=0.1)
+        polygons.append(polygon)
+            
+    features = createGeoJSONFeature(polygons)
+    collection = createGeojsonFeatureCollection(features)
+    
+    with open(geojson_file, 'w') as f:
+        json.dump(collection, f)
 
-    # Render the template with the choropleth map
-    return render_template('index.html', choropleth_map=choropleth_map)
-@app.route('/soil')
-def index_soil():
-    # Generate the choropleth map HTML code
-    choropleth_map = generate_choropleth_map_soil()
+    with open(geojson_file) as f:
+        geojson_data = json.load(f)
 
-    # Render the template with the choropleth map
-    return render_template('index.html', choropleth_map=choropleth_map)
-@app.route('/dynamicsearch')
-def index_dynamics():
-    # Get user-specified parameters from the URL or form
-    data_variable = request.args.get('data_variable', 'actual_yield')
-    start_date = request.args.get('start_date')
-    end_date = request.args.get('end_date')
-    crop = request.args.get('crop', None)  # Get the selected crop ID from the request
+    
+    # Create Plotly figure
+    fig = go.Figure()
 
-    # Generate the choropleth map HTML code
-    choropleth_map = generate_choropleth_map(data_variable=data_variable, start_date=start_date, end_date=end_date, crop=crop)
+    # Add markers with custom hover text
+    fig.add_trace(go.Scattermapbox(
+        mode="markers",
+        lon=[point["lon"] for point in points],
+        lat=[point["lat"] for point in points],
+        text=[f"{point['name']}: {point['info']}" for point in points],  # Dynamic hover text
+        marker={'size': 10, 'color': "red"},
+        hoverinfo='text'
+    ))
 
-    # Render the template with the choropleth map
-    return render_template('dynamic.html', choropleth_map=choropleth_map)
+    # Add MultiPolygon to the figure with dynamic hover text
+    for feature2 in geojson_data['features']:
+        subcounty_name = feature2['properties'].get('Subcounty', 'Unknown')
+        other_property = feature2['properties'].get('OtherProperty', 'No additional info')  # Replace with actual property key
+        for multipolygon in feature2['geometry']['coordinates']:
+            for polygon in multipolygon:
+                fig.add_trace(go.Scattermapbox(
+                    fill="toself",
+                    lon=[coord[0] for coord in polygon],
+                    lat=[coord[1] for coord in polygon],
+                    text=f"{subcounty_name}: {other_property}",  # Dynamic hover text
+                    marker={'size': 5, 'color': "blue"},
+                    line=dict(width=2),
+                    hoverinfo='text'
+                ))
 
-@app.route('/map')
-def map():
-    # Generate the choropleth map HTML code
-    choropleth_map = generate_choropleth_map_soil()
+    # Update the layout
+    fig.update_layout(
+        mapbox=dict(
+            style="carto-positron",
+            center={"lat": 1.27, "lon": 32.29},  # Center the map
+            zoom=7
+        ),
+        margin={"r":0,"t":0,"l":0,"b":0}
+    )
 
-    # Render the template with the choropleth map
-    return render_template('index.html', choropleth_map=choropleth_map)
-@app.route('/generate_qr', methods=['POST'])
-def generate_qr():
-    # Get the Farm ID from the form
-    farm_id = request.form['farm_id']
-
+    # Return the HTML of the figure
+    return fig.to_html(full_html=False)
+def get_farmProperties(farm_id):
+    
     # Connect to the MySQL database
     cursor = mysql.connection.cursor()
 
@@ -354,7 +399,62 @@ def generate_qr():
                 WHERE 
                     f.id = %s
                 """, (farm_id,))
-    data = cursor.fetchall()
+    data = cursor.fetchall()    
+    return data
+
+
+# # Example usage:
+# geojson_file = 'multipolygon.json'
+# points = [
+#     {"lat": 37.7749, "lon": -122.4194, "name": "San Francisco", "info": "City in California"},
+#     {"lat": 34.0522, "lon": -118.2437, "name": "Los Angeles", "info": "City in California"},
+#     {"lat": 40.7128, "lon": -74.0060, "name": "New York", "info": "City in New York"}
+# ]
+
+# html_output = create_mapbox_html(geojson_file, points)
+# print(html_output)
+
+@app.route('/combined_map')
+def index_combined():
+    # Generate the choropleth map HTML code
+    choropleth_map = generate_choropleth_map_combined()
+
+    # Render the template with the choropleth map
+    return render_template('index.html', choropleth_map=choropleth_map)
+@app.route('/soil')
+def index_soil():
+    # Generate the choropleth map HTML code
+    choropleth_map = generate_choropleth_map_soil()
+
+    # Render the template with the choropleth map
+    return render_template('index.html', choropleth_map=choropleth_map)
+@app.route('/dynamicsearch')
+def index_dynamics():
+    # Get user-specified parameters from the URL or form
+    data_variable = request.args.get('data_variable', 'actual_yield')
+    start_date = request.args.get('start_date')
+    end_date = request.args.get('end_date')
+    crop = request.args.get('crop', None)  # Get the selected crop ID from the request
+
+    # Generate the choropleth map HTML code
+    choropleth_map = generate_choropleth_map(data_variable=data_variable, start_date=start_date, end_date=end_date, crop=crop)
+
+    # Render the template with the choropleth map
+    return render_template('dynamic.html', choropleth_map=choropleth_map)
+@app.route('/map')
+def map():
+    # Generate the choropleth map HTML code
+    choropleth_map = generate_choropleth_map_soil()
+
+    # Render the template with the choropleth map
+    return render_template('index.html', choropleth_map=choropleth_map)
+@app.route('/generate_qr', methods=['POST'])
+def generate_qr():
+    cursor = mysql.connection.cursor()
+    # Get the Farm ID from the form
+    farm_id = request.form['farm_id']
+    # Connect to the MySQL database
+    data = get_farmProperties(farm_id)
 
     if not data:
         print("No data found for the farm.")
@@ -447,13 +547,34 @@ def qrcode():
 def index():
     return render_template('login.html')
 
-@app.route('/choropleth_map/<region_name>')
-def generate_choropleth_map_specific_region(region_name):
-    choropleth_map = generate_choropleth_map_combined(highlight_region=region_name)
+@app.route('/boundaries/<region_name>/<farm_id>')
+def generate_choropleth_map_specific_region(region_name, farm_id):
+    geojson_file = 'multipolygon.json'
+    data = get_farmProperties(farm_id)
+    
+    points = []
+    for item in data:
+        lat_lon = item[2].split(',')
+        lat = float(lat_lon[0])
+        lon = float(lat_lon[1])
+        name = item[12]
+        info = f"{item[14]}, {item[15]}, farm_id={item[0]}"
+        points.append({"lat": lat, "lon": lon, "name": name, "info": info})
+#     points = [
+#     {"lat": 37.7749, "lon": -122.4194, "name": "San Francisco", "info": "City in California"},
+#     {"lat": 34.0522, "lon": -118.2437, "name": "Los Angeles", "info": "City in California"},
+#     {"lat": 40.7128, "lon": -74.0060, "name": "New York", "info": "City in New York"}
+# ]
+    choropleth_map = create_mapbox_html(geojson_file, points)
 
     # Render the template with the choropleth map
     return render_template('index.html', choropleth_map=choropleth_map)
-
+@app.route('/test')
+def test():
+    
+    print(get_farmProperties("1"))
+    return "ok"
+    
     
     
     
