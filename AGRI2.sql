@@ -250,11 +250,27 @@ UPDATE farm
 SET geolocation = '-0.5432572,30.1846092'
 WHERE name = 'Wanyama Esperito';
 
+INSERT INTO farm (name, subcounty, farmergroup_id, district_id, geolocation) VALUES
+('Tea farmer', 'Nebbi', 2, 84, '2.4697,31.1028'),
+('Soybean Esperito', 'Ntungamo', 3, 23, '-0.8794,30.2647');
+
+INSERT INTO crop (name, weight, category_id) VALUES
+('Tea', 25.0, 4),
+('Soybean', 20.0, 3);
+INSERT INTO produceCategory (name, grade) VALUES
+('Soybean', 5),
+('Tea', 4);
+
 INSERT INTO farmdata (farm_id, crop_id, tilled_land_size, planting_date, season, quality, quantity, harvest_date, expected_yield, actual_yield, timestamp, channel_partner, destination_country, customer_name) VALUES
 (124, 7, 2.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
 (125, 8, 1.0, '2023-03-20', 1, 'Excellent', 50, '2023-07-20', 500.0, 480.0, '2023-07-20 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
 (126, 7, 3.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
 (126, 8, 1.5, '2023-03-15', 1, 'Good', 50, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd');
+INSERT INTO farmdata (farm_id, crop_id, tilled_land_size, planting_date, season, quality, quantity, harvest_date, expected_yield, actual_yield, timestamp, channel_partner, destination_country, customer_name) VALUES
+(127, 9, 5.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
+(127, 9, 4.0, '2023-03-20', 1, 'Excellent', 50, '2023-07-20', 500.0, 480.0, '2023-07-20 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
+(128, 10, 2.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
+(128, 10, 3.5, '2023-03-15', 1, 'Good', 50, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd');
 
 INSERT INTO crop (name, weight, category_id) VALUES
 ('Coffee Arabica', 25.0, 1),

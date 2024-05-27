@@ -12,6 +12,7 @@ from zipfile import ZipFile
 import tempfile
 import os
 import plotly.graph_objects as go
+import random
 
 app = Flask(__name__)
 
@@ -312,7 +313,8 @@ def create_mapbox_html(geojson_file, points):
     for point in points:
         lat = point["lat"]
         lon = point["lon"]
-        polygon = create_polygon(lat, lon, num_sides=6, radius=0.1)
+        num_sides = random.randint(3, 10)
+        polygon = create_polygon(lat, lon, num_sides=num_sides, radius=0.1)
         polygons.append(polygon)
             
     features = createGeoJSONFeature(polygons)
@@ -478,7 +480,7 @@ def generate_qr():
                 for i in range(batch_number):
                     serial_data = f"{farmer_name}_{crop_name}_{i+1}"
                     serial_number = hashlib.md5(serial_data.encode('utf-8')).hexdigest()
-                    formatted_data = f"Country: Uganda\nFarm ID: {farmer_name}\nGroup ID: {farmerg_name}\nGeolocation: {geolocation}\nLand poundaries: http://164.92.211.54:5000//boundaries/{district_name}/{farm_id}\nDistrict: {district_name}\nCrop: {crop_name}\nGrade: {grade}\nTilled Land Size: {tilled_land_size} ACRES\nSeason: {season}\nQuality: {quality}\nProduce Weight: {produce_weight} KG\nHarvest Date: {harvest_date}\nTimestamp: {timestamp}\nDistrict Region: {district_region}\nBatch Number: {i+1}\nChannel Partner: {channel_partner}\n Destination Country: {destination_country}\n Customer Name: {customer_name}\nSerial Number: {serial_number}\n"
+                    formatted_data = f"Country: Uganda\nFarm ID: {farmer_name}\nGroup ID: {farmerg_name}\nGeolocation: {geolocation}\nLand poundaries: http://164.92.211.54:5000/boundaries/{district_name}/{farm_id}\nDistrict: {district_name}\nCrop: {crop_name}\nGrade: {grade}\nTilled Land Size: {tilled_land_size} ACRES\nSeason: {season}\nQuality: {quality}\nProduce Weight: {produce_weight} KG\nHarvest Date: {harvest_date}\nTimestamp: {timestamp}\nDistrict Region: {district_region}\nBatch Number: {i+1}\nChannel Partner: {channel_partner}\n Destination Country: {destination_country}\n Customer Name: {customer_name}\nSerial Number: {serial_number}\n"
 
                     # Generate the QR code
                     qr = segno.make(formatted_data)
