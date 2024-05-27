@@ -234,32 +234,15 @@ INSERT INTO crop (name, weight, category_id) VALUES
 ('Coffee', 25.0, 3),
 ('Cassava', 30.0, 4),
 ('Rice', 20.0, 5),
-('Bananas', 15.0, 6);
-
-INSERT INTO farm (name, subcounty, farmergroup_id, district_id, geolocation) VALUES
-('Godfrey Lutwama', 'Mbale', 1, 87, '1.0799005,34.1554209'),
-('Busingye Joshua', 'Masaka', 2, 84, '-0.4855154,31.493016'),
-('Wanyama Esperito', 'Bushenyi', 3, 23, '-0.5432572,30.1846092');
-UPDATE farm
-SET geolocation = '1.0799005,34.1554209'
-WHERE name = 'Godfrey Lutwama';
-UPDATE farm
-SET geolocation = '-0.4855154,31.493016'
-WHERE name = 'Busingye Joshua';
-UPDATE farm
-SET geolocation = '-0.5432572,30.1846092'
-WHERE name = 'Wanyama Esperito';
+('Bananas', 15.0, 6),
+('Coffee Arabica', 25.0, 1),
+('Coffee Robusta', 20.0, 2),
+('Tea', 25.0, 4),
+('Soybean', 20.0, 3);
 
 INSERT INTO farm (name, subcounty, farmergroup_id, district_id, geolocation) VALUES
 ('Tea farmer', 'Nebbi', 2, 84, '2.4697,31.1028'),
 ('Soybean Esperito', 'Ntungamo', 3, 23, '-0.8794,30.2647');
-
-INSERT INTO crop (name, weight, category_id) VALUES
-('Tea', 25.0, 4),
-('Soybean', 20.0, 3);
-INSERT INTO produceCategory (name, grade) VALUES
-('Soybean', 5),
-('Tea', 4);
 
 INSERT INTO farmdata (farm_id, crop_id, tilled_land_size, planting_date, season, quality, quantity, harvest_date, expected_yield, actual_yield, timestamp, channel_partner, destination_country, customer_name) VALUES
 (124, 7, 2.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
@@ -272,9 +255,6 @@ INSERT INTO farmdata (farm_id, crop_id, tilled_land_size, planting_date, season,
 (128, 10, 2.5, '2023-03-15', 1, 'Good', 100, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd'),
 (128, 10, 3.5, '2023-03-15', 1, 'Good', 50, '2023-07-15', 2500.0, 2300.0, '2023-07-15 12:00:00', 'Agro Supplies Ltd', 'Uganda', 'Jinja Farms Ltd');
 
-INSERT INTO crop (name, weight, category_id) VALUES
-('Coffee Arabica', 25.0, 1),
-('Coffee Robusta', 20.0, 2);
 
 INSERT INTO produceCategory (name, grade) VALUES
 ('Coffee Arabica', 5),

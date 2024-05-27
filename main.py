@@ -13,15 +13,22 @@ import tempfile
 import os
 import plotly.graph_objects as go
 import random
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 app = Flask(__name__)
 
 pp = Flask(__name__)
+app.config['SECRET_KEY'] = 'x1bxeb|kLxaaPxa6xfexe26sx8cxdfx8eVx84rS#xcdxb1xd9xe7'  
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'brian'
 app.config['MYSQL_PASSWORD'] = 'brian'
 app.config['MYSQL_DB'] = 'qrcode'
+
 mysql = MySQL(app)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'index'
 
 
 users = {
@@ -29,6 +36,13 @@ users = {
     'juan': 'juan',
     'user1':'user1'
 }
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User(user_id) if user_id in users else None
 
 
 def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_date=None, crop=None):
@@ -513,29 +527,37 @@ def generate_qr():
     
     # Return the QR code image as binary data for rendering
     return send_file(zip_temp.name, as_attachment=True, download_name=f"QR_{farmer_name}.zip")
+
 @app.route('/auth', methods=['POST'])
 def authenticate():
     username = request.form['username']
     password = request.form['password']
     
-    # Vérifier si les identifiants sont valides
     if username in users and users[username] == password:
-        # Rediriger vers la route /map si les identifiants sont corrects
+        user = User(username)
+        login_user(user)
         return redirect(url_for('home'))
     else:
-        # Retourner une erreur dans le template login.html si les identifiants sont incorrects
         return render_template('login.html', error='Invalid username or password')
 
 @app.route('/home')
+@login_required
 def home():
     return render_template('home.html')
 
 @app.route('/qrcode')
+@login_required
 def qrcode():
     return render_template('codeQr.html')
 @app.route('/')
 def index():
     return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 @app.route('/boundaries/<region_name>/<farm_id>')
 def generate_choropleth_map_specific_region(region_name, farm_id):
