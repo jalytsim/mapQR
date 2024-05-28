@@ -1,1 +1,1 @@
-{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": []}, "properties": {}}]}
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "MultiPolygon", "coordinates": [[[[31.2028, 2.4697], [31.052799999999998, 2.556302540378444], [31.052799999999998, 2.383097459621556], [31.2028, 2.4697]]], [[[31.2028, 2.4697], [31.052799999999998, 2.556302540378444], [31.052799999999998, 2.383097459621556], [31.2028, 2.4697]]]]}, "properties": {}}]}
