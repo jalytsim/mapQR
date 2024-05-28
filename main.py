@@ -44,7 +44,23 @@ class User(UserMixin):
 def load_user(user_id):
     return User(user_id) if user_id in users else None
 
+def get_user(username):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+    user = cursor.fetchone()
+    cursor.close()
+    return user
 
+def add_user(username, password):
+    cursor = mysql.connection.cursor()
+    try:
+        cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
+        cursor.commit()
+        print("User added successfully.")
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+    finally:
+        cursor.close()
 def generate_choropleth_map(data_variable='actual_yield', start_date=None, end_date=None, crop=None):
     # Specify the correct file path
     geojson_file_path = 'src/geoBoundaries-UGA-ADM3.geojson'
@@ -322,7 +338,6 @@ def createGeojsonFeatureCollection(multi_polygon_feature):
     return geojson_data
 def create_mapbox_html(geojson_file, points):
     # Load GeoJSON file
-    
     polygons = []
     for point in points:
         lat = point["lat"]
@@ -334,12 +349,15 @@ def create_mapbox_html(geojson_file, points):
     features = createGeoJSONFeature(polygons)
     collection = createGeojsonFeatureCollection(features)
     
-    with open(geojson_file, 'w') as f:
-        json.dump(collection, f)
+    try:
+        with open(geojson_file, 'w') as f:
+            json.dump(collection, f)
 
-    with open(geojson_file) as f:
-        geojson_data = json.load(f)
-
+        with open(geojson_file) as f:
+            geojson_data = json.load(f)
+    except (IOError, json.JSONDecodeError) as e:
+        print(f"Error loading or writing GeoJSON file: {e}")
+        return None
     
     # Create Plotly figure
     fig = go.Figure()
@@ -370,11 +388,17 @@ def create_mapbox_html(geojson_file, points):
                     hoverinfo='text'
                 ))
 
+    # Determine the map center
+    if len(points) == 1:
+        center_coords = {"lat": points[0]["lat"], "lon": points[0]["lon"]}
+    else:
+        center_coords = {"lat": 1.27, "lon": 32.29}
+
     # Update the layout
     fig.update_layout(
         mapbox=dict(
             style="carto-positron",
-            center={"lat": point["lat"], "lon": point["lon"]},  # Center the map
+            center=center_coords,  # Center the map
             zoom=7
         ),
         margin={"r":0,"t":0,"l":0,"b":0}
@@ -382,6 +406,7 @@ def create_mapbox_html(geojson_file, points):
 
     # Return the HTML of the figure
     return fig.to_html(full_html=False)
+
 def get_farmProperties(farm_id):
     
     # Connect to the MySQL database
@@ -417,6 +442,92 @@ def get_farmProperties(farm_id):
                 """, (farm_id,))
     data = cursor.fetchall()    
     return data
+def get_pointDetails(point_id):
+    # Connect to the MySQL database
+    cursor = mysql.connection.cursor()
+
+    # Execute the query to fetch the data for the given Point ID
+    cursor.execute("""
+                SELECT 
+                    p.id AS point_id, 
+                    p.longitude,
+                    p.latitude, 
+                    p.district_id, 
+                    p.farm_id,
+                    d.name AS district_name,
+                    d.region AS district_region,
+                    f.name AS farm_name,
+                    f.subcounty AS farm_subcounty,
+                    f.geolocation AS farm_geolocation,
+                    fg.name AS farmergroup_name
+                FROM 
+                    point p
+                JOIN 
+                    district d ON p.district_id = d.id
+                JOIN 
+                    farm f ON p.farm_id = f.id
+                JOIN 
+                    farmergroup fg ON f.farmergroup_id = fg.id
+                WHERE 
+                    p.id = %s
+                """, (point_id,))
+    data = cursor.fetchall()
+    return data
+def get_all_points():
+    # Connect to the MySQL database
+    cursor = mysql.connection.cursor()
+
+    # Execute the query to fetch all points
+    cursor.execute("""
+                SELECT 
+                    p.id AS point_id, 
+                    p.longitude,
+                    p.latitude, 
+                    p.district_id, 
+                    p.farm_id,
+                    d.name AS district_name,
+                    d.region AS district_region,
+                    f.name AS farm_name,
+                    f.subcounty AS farm_subcounty,
+                    f.geolocation AS farm_geolocation,
+                    fg.name AS farmergroup_name
+                FROM 
+                    point p
+                JOIN 
+                    district d ON p.district_id = d.id
+                JOIN 
+                    farm f ON p.farm_id = f.id
+                JOIN 
+                    farmergroup fg ON f.farmergroup_id = fg.id
+                """)
+    data = cursor.fetchall()
+    return data
+def insert_point(longitude, latitude, district_id, farm_id):
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        INSERT INTO point (longitude, latitude, district_id, farm_id)
+        VALUES (%s, %s, %s, %s)
+    """, (longitude, latitude, district_id, farm_id))
+
+    mysql.connection.commit()
+    cursor.close()
+def point_exists(longitude, latitude, district_id, farm_id):
+    cursor = mysql.connection.cursor()
+
+    cursor.execute("""
+        SELECT COUNT(*) 
+        FROM point 
+        WHERE longitude = %s AND latitude = %s AND district_id = %s AND farm_id = %s
+    """, (longitude, latitude, district_id, farm_id))
+    count = cursor.fetchone()[0]
+    cursor.close()
+    return count > 0
+
+
+
+
+
 
 @app.route('/combined_map')
 def index_combined():
@@ -560,10 +671,10 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/boundaries/<region_name>/<farm_id>')
-def generate_choropleth_map_specific_region(region_name, farm_id):
+def generate_polygon_map_specific_region(region_name, farm_id):
     geojson_file = 'multipolygon.json'
     data = get_farmProperties(farm_id)
-    
+     
     points = []
     for item in data:
         lat_lon = item[2].split(',')
@@ -571,16 +682,39 @@ def generate_choropleth_map_specific_region(region_name, farm_id):
         lon = float(lat_lon[1])
         name = item[12]
         info = f"{item[14]}, {item[15]}, farm_id={item[0]}"
+
+        # Check if the point exists in the database
+        if not point_exists(lon, lat, item[3], item[0]):
+            # Insert the point into the database if it doesn't exist
+            insert_point(lon, lat, item[3], item[0])
+
         points.append({"lat": lat, "lon": lon, "name": name, "info": info})
-#     points = [
-#     {"lat": 37.7749, "lon": -122.4194, "name": "San Francisco", "info": "City in California"},
-#     {"lat": 34.0522, "lon": -118.2437, "name": "Los Angeles", "info": "City in California"},
-#     {"lat": 40.7128, "lon": -74.0060, "name": "New York", "info": "City in New York"}
-# ]
+
     choropleth_map = create_mapbox_html(geojson_file, points)
 
-    # Render the template with the choropleth map
     return render_template('index.html', choropleth_map=choropleth_map)
+@app.route('/map/all_points')
+def display_all_points():
+    geojson_file = 'multipolygon.json'
+    data = get_all_points()
+
+    points = []
+    for item in data:
+        lon = item[0]
+        lat = item[1]
+        farm_id = item[2]
+        farm_name = item[3]
+        district_name = item[4]
+        district_region = item[5]
+        farmergroup_name = item[6]
+        
+        info = f"{district_name}, {district_region}, farm_id={farm_id}"
+        points.append({"lat": lat, "lon": lon, "name": farm_name, "info": info})
+
+    choropleth_map = create_mapbox_html(geojson_file, points)
+
+    return render_template('index.html', choropleth_map=choropleth_map)
+
 @app.route('/test')
 def test():
     
