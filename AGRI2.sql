@@ -78,6 +78,17 @@ CREATE TABLE IF NOT EXISTS farmData (
     FOREIGN KEY (crop_id) REFERENCES crop(id)
 );
 
+CREATE TABLE IF NOT EXISTS point (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    longitude FLOAT,
+    latitude FLOAT,
+    district_id INT,
+    farm_id INT,
+    FOREIGN KEY (district_id) REFERENCES district(id),
+    FOREIGN KEY (farm_id) REFERENCES farm(id)
+);
+
+
 LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\ugandaDistrict.csv'
 INTO TABLE district
 FIELDS TERMINATED BY ','
